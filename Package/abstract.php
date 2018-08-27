@@ -5,6 +5,8 @@ namespace Package;
 define('PACKAGE_ROOT', dirname(__FILE__));
 define('MODULE_ROOT', dirname(PACKAGE_ROOT));
 
+use Magento\Framework\Filesystem\Glob;
+
 abstract class PackageAbstract
 {
     const DIFF_NONEXISTENT    = 'nonexistent';
@@ -192,7 +194,7 @@ abstract class PackageAbstract
      */
     protected function loadFiles(array $extensions = [])
     {
-        return glob($this->getFilePattern($extensions), GLOB_BRACE);
+        return glob($this->getFilePattern($extensions), Glob::GLOB_BRACE);
     }
     
     
